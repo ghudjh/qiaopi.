@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-Lge2E2XotzMiwH69/MXB72yLpwyENMiOKX8zS8Qo7LDCvaBIWGL+GlRQEKIpYR04" crossorigin="anonymous"></script>
+        <script src="./echarts.min.js"></script>
+        <link rel="stylesheet" href="./css/animate.css">
+        <link rel="stylesheet" href="./css/economic.css">
+        <link rel="stylesheet" href="./css/culture.css">
+        <link rel="stylesheet" href="./css/action.css">
+        <link rel="stylesheet" href="./css/nav.css">
+        <link rel="stylesheet" href="./css/dots.css"> 
+        
+      <style>
+        body {
+          padding: 0px;
+          background: url('./image/整体背景图.png')
+          
+        }
+
+        .image{
+            background-image: url('./image/网页封面.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:1036px;
+            width:100%;
+        }
+
+        .image2{
+            background-image: url('./image/part1-身体病痛背景.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:550px;
+            width:100%;
+        }
+
+        .image3{
+            background-image: url('./image/part1-睡眠问题背景.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:590px;
+            width:100%;
+        }
+
+        .image4{
+            background-image: url('./image/part1-女性健康背景.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:540px;
+            width:100%;
+        }
+
+        .image5{
+            background-image: url('./image/part1-心理健康背景.png');
+            background-position: 0 0;
+            background-attachment: fixed;
+            background-size: cover;
+            height:470px;
+            width:100%;
+        }
+
+        p {
+        font-size: 18px;
+        width: calc(100% - 60px);
+        max-width: 700px;
+        margin: 30px auto;
+        text-align:justify;
+        line-height: 36px;
+        }
+
+        .p1 {
+        font-size: 18px;
+        width: calc(100% - 60px);
+        max-width: 700px;
+        margin: 30px auto;
+        text-align:center;
+        line-height: 36px;
+        }
+
+        .note1{
+            font-size: 13px;
+            text-align: center;
+
+            color:#4a312cac;
+        }
+
+        .note2{
+            font-size: 15px;
+            margin:0px auto;
+            text-align:left;
+            color:#ffffffc3
+        }
+
+        h2{
+        color: #000;
+        }
+
+        .highlight1{
+            font-weight:bold;
+            color:#753d30;
+            font-size: 18px;
+        }
+        .highlight2{
+            font-weight:bolder;
+            color:#f0e9e3;
+            font-size: 46px;
+            text-align: center;
+            font-size:46px;
+            height:220px;
+            line-height: 220px;
+        }
+        
+        .highlight3 {
+            font-weight: bold;
+            color: #a32c40;
+            font-size: 20px;
+        }
+        
+        .highlight4{
+            font-weight:bold;
+            color:#a32c40
+        }
+
+        .bgtitle{
+            position:relative;
+            text-align: center;
+            top:300px;
+            font-size: 65px;
+            color:#a32c40;
+            font-weight: bolder;
+            background-color: rgba(255, 255, 255, 0.7);
+            height:220px;
+        }
+        
+        @font-face{
+            font-family: 'TrueType_2';
+            src: url(./font/TrueType_2.ttf);
+            }
+
+        @font-face{
+            font-family: 'TrueType_1';
+            src: url(./font/TrueType_1.ttf);
+            }
+
+        .mtitle{
+            font-family:TrueType_1;
+            font-weight:bolder;
+            color:#753d30;
+            font-size: 75px;
+            vertical-align: center; /* 设置垂直对齐为底部 */
+            display: inline-block; /* 需要与 vertical-align 配合使用 */
+            margin-top:30px;
+        }
+
+        .stitle{
+            font-family:TrueType_1;
+            font-weight:normal;
+            color:#753d30;
+            font-size: 70px;
+            vertical-align:top; /* 设置垂直对齐为顶部 */
+            display: inline-block; /* 需要与 vertical-align 配合使用 */
+            margin-top: 0px;
+
+        }
+        
+        .zwtitle{
+            font-family:TrueType_2;
+            color: #753d30;
+            font-size: 60px;
+            background-color: transparent;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-weight:bolder;
+            height:230px;
+            line-height: 230px;
+        }
+        #slider {
+        position: relative;
+        height: 400px;
+        margin-bottom: 0px;
+        margin-left: 10px;
+        overflow: hidden;
+        }
+        #slider img {
+        position: absolute;
+        margin-left: 300px;
+        top: 20px;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity 0.5s;
+        }
+        #slider img.active {
+        opacity: 1;
+        z-index: 2;
+        }
+
+      </style>
+      <title>纸短情长,尺素渡海:「侨」见批信中的家国情怀</title>
+    </head>
+    
+    <body data-spy="scroll" data-target="#menu" data-offset="56">
+    
+      <!-- 导航栏 -->
+      <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-light navbar-hidden">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="nav-link" href="#pt0">开篇</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pt1">过番谋生,侨批溯源</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pt2">跨越山海,汇通天下</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pt3">尺素丹心,一纸万金</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pt4">世界记忆,“侨”见未来</a></li>
+              <li class="nav-item"><a class="nav-link" href="#pt5">结语</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+
+      <div class="image"><!-- 大标题 -->
+            <div class="bgtitle">
+                <h3 class="mtitle animate__animated animate__fadeIn animate__once animatedElement animate__slow">纸短情长,尺素渡海</h3></br>
+                <h3 class="stitle animate__animated animate__fadeIn animate__once animatedElement animate__slow">「侨」见批信中的家国情怀</h3>
+            </div>
+      </div>
+
+      <!-- 爷孙故事引入 -->
+      <div class="content" style="background-image: url('./image/整体背景图.png');">
+        <!-- 页面内容部分，包括各个章节（pt0, pt1, ...） -->
+        <div id="pt0" style="margin-bottom:20px;">
+            <div style="height: 50px;"></div>
+            <!--左图右文-->
+            <p>
+                <img class="image-left" src="./image/爷孙故事.PNG" width="300%" alt="爷孙故事">
+                <div style="height: 100px;"><p class="intro-text" id="introText1">
+                .
+                孙：爷爷，这张皱皱的纸是什么呀？
+                爷：这啊——是从中国寄来的侨批
+                爷爷看着信纸，陷入回忆……
+                </p></div>
+            </p>
+        </div>
+
+        <!-- 过番谋生，侨批溯源 -->
+        <div id="pt1" style="margin-bottom:10px;">
+            <div style="height: 10px;"></div>
+            <div class="image" style="height: 230px;">
+                <h3 class="zwtitle animate__animated animate__fadeIn animate__once animatedElement" style="text-align:center; background-color: #d2c0ae82;">过番谋生，侨批溯源</h3>
+            </div>
+            <p>潮汕地处沿海，先民素有出洋谋生的传统。鸦片战争后，随着广州、潮州等地的相继开埠，加之<span class="highlight1">国内社会动荡、自然灾害和人口压力</span>等因素，以及<span class="highlight1">东南亚、澳洲等地区的相继开发</span>，沿海百姓纷纷远赴重洋，踏上海外谋生之途。</p>
+            <p>早期过番谋生的移民主要依靠出卖廉价劳动力为生，<span class="highlight1">采集橡胶、修路、垦荒、种植</span>是最为常见的谋生手段。</p>
+
+            <!--海外生活轮播图[未完成]-->
+                <div id="slider">
+                    <img src="./image/海外生活2.jpg" width="45%" alt="Image 2">  
+                    <img src="./image/海外生活3.jpg" width="50%" alt="Image 3">
+                    <img src="./image/海外生活4.jpg" width="53%" alt="Image 4"> 
+                    <img src="./image/海外生活6.jpg" width="45%" alt="Image 6">    
+                </div>
+            <div class="note1">数据来源：百年跨国两地书·福建侨批网上展厅</div>
+            <script>
+                let images = document.querySelectorAll('#slider img');
+                let currentImage = 0;
+                let slideInterval = setInterval(nextImage, 3000);
+                function nextImage() {
+                images[currentImage].classList.remove('active');
+                currentImage = (currentImage + 1) % images.length;
+                images[currentImage].classList.add('active');
+            }
+            </script>
+
+            <p>华侨在海外谋生，思念亲人， 便寄信报平安或问候家人，并将积攒的钱款汇回家乡，于是便产生了<span class="highlight1">“信款合一”</span> 的特殊家书——侨批。</p>
+            <p>从侨批信件的寄出地来看，当时华侨的足迹遍布东亚及东南亚各国，最远的甚至横跨半球，去到赤道南端的澳大利亚。</p>
+            <p>在信件的数量上，以<span class="highlight1">泰国（24202条）和新加坡（17929条）</span>寄出的最为频密，这也一定程度上反映了这两个地区的华侨比重。</p>
+            <!--寄批地-->
+            <div class="flourish-embed flourish-map" data-src="visualisation/17394295" style="width: 55%;margin: auto;">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+            </div>
+
+            <p>华侨的信件多寄往<span class="highlight1">家乡</span>，主要是如今汕头、揭阳、潮州等市，也有少部分批信会被送往广州、梅州以及福建沿海等地区。</p>
+            <!--收批地-->
+            <div style="text-align: center;"><img src="./image/收批地图.jpg" width="53%" alt="收批地图"></div>
+
+        
+
+
+        <!--跨越山海，汇通天下-->
+        <div id="pt2" style="margin-bottom:10px;">
+            <div style="height: 10px;"></div>
+            <div class="image" style="height: 230px;">
+                <h3 class="zwtitle animate__animated animate__fadeIn animate__once animatedElement" style="text-align:center; background-color: #d2c0ae82;">跨越山海，汇通天下</h3>
+            </div>
+            <p>随着寄送银信需求的增大，一种专门为华侨华人递送银信、陪送华侨华人出国或归国为职业的人群应运而生。因为当时往来只能走水路，这些人被称为<span class="highlight1">“水客”</span>，在广府地区也被称作<span class="highlight1">“巡城马”</span>。</p>
+            <p>“侨批”的送达过程十分复杂，侨批馆(后改侨批局)必须定期收集、解送、投递“侨批”，并在“侨批”封正面写上国内收信人地址、姓名、寄钱币种数及南洋寄信人姓名。背面则盖国外侨批局图章，并在信封上写上列号、设簿登记；同时列出清单，附在“侨批”总包内寄出。而为了减轻重量，节约邮费，当时“侨批”用的信纸一般薄如蝉翼。</p>
+                
+            <p>当时的“侨批”通过海路送达侨眷手中，侨眷收信后要马上回信，回信再经“批客”的手，送回侨批局，最后重返寄信人手中。寄信人得知家人已如数收到钱物时，这枚带有“往返”功能的“侨批”才算顺利走完了它的旅程。</p>
+            <!--流程图-->
+            <div style="text-align: center;"><img src="./image/寄批流程图.png" width="50%" alt="侨批流程图"></div>
+            <br>
+            <br>
+            <!--冷知识-->
+            <div style="text-align: center;"><img src="./image/侨批寄件相关知识介绍.png" width="50%" alt="侨批冷知识"></div>
+
+            <p>二战期间，日寇侵占东南亚各地后，制定了限制华侨华人汇款的各项条款；二战结束后，出于对巨额侨汇的不安，南洋当局延续了限制华侨华人汇款的政策；而在新中国成立后，部分南洋国家配合西方反华势力，对中国进行政治与经济金融封锁，禁止或限制当地华侨华人汇款回国。</p>
+            <p>为保证侨批顺利送达，海内外的侨批业者发明了<span class="highlight1">“暗语”</span>。侨胞们对侨批中随信汇寄银钱的数目等信息进行隐藏，只有懂相关隐语的人才能破解。而侨批局为了广大侨眷的利益，也竭力在华侨华人、侨眷和海外联号批局之间进行沟通。</p>
+            
+            <!--暗语-->
+            <div style="text-align: center;"><img src="./image/暗语.png" width="35%" alt="暗语"></div>
+            <br>
+            <div class="note1">暗语示例图</div>
+
+            <p>“兹付去烟纸壹佰块”、“兹付去烟纸柒拾片查收”、“门牌柒拾伍号”、“外付饼干捌拾斤”这些侨批内容看似平常，但其实另有乾坤：信中的<span class="highlight1">“烟纸”、“门牌”、“饼干”</span>等代指的是钱的数目，是华侨华人寄送侨批使用的“暗语”。</p>
+        </div>
+
+
+        <!--尺素丹心，一纸万金-->
+        <div id="pt3" style="margin-bottom:10px;">
+            <div style="height: 10px;"></div>
+            <div class="image" style="height: 230px;">
+                <h3 class="zwtitle animate__animated animate__fadeIn animate__once animatedElement" style="text-align:center; background-color: #d2c0ae82;">尺素丹心，一纸万金</h3>
+            </div>
+
+            <p>海外华侨身在异国，心系故乡，稍有积蓄便寄钱回家，赡养父母、妻儿，甚至仅一元钱也要掰成两半，一半生活，一半养家。</p>
+             <p>从清末至1980年代的100多年的侨批历史中，侨批封上有着丰富的货币信息：从金属货币到纸币；从外国银洋、本国银元到国币、法币、金圆券；再到人民券(旧币)、港币、人民币等……见证了近代中国的货币历史以及中国与世界交往的“海上金融丝绸之路”。</p>
+            <!--币种分布-->
+            <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17367091" style="width: 38%;margin: auto;">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+            </div>
+
+            <p>一封封侨批内容虽为家庭琐事，却充满了<span class="highlight1">浓浓的思亲孝悌之情</span>。在已知人物关系的39916条数据中，晚辈向长辈寄送的书信占比就接近半数（47.05%），兄（姐）弟（妹）之间的批信来往也有将近万条（9101条）。</p>
+            <!--收寄人关系-->
+            <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17366986" style="width: 36%;margin: auto;">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+            </div>
+
+
+            <div class="p1"><span class="highlight1">一封侨批就是一个故事。</span></div>
+            <!--侨批内容示例-->
+            <div style="text-align: center;"><img src="./image/侨批内容示例.jpg" width="35%" alt="侨批内容示例"></div>
+            <p>字里行间，有“候有业可任自当厚寄，决不致(置)于脑后”一般笃诚守信的优秀品格，有“火船驶过七洲洋，回头不见我家乡，是好是劫全凭命”那样开拓进取的拼搏精神，更有“宜知国与家一体，须唤启精神，以御外侮，最后必有一日之所希望也”的家国情怀。</p>
+            <p>纸短情长，单薄的批纸上，浸透着海外侨胞的血泪和汗水，蕴含着他们对祖国、故里和亲人的一片深情，昭示着他们对家乡、骨肉的责任感。侨批文字真实记录了中国海外移民艰辛奋斗的心路历程，也见证了中华儿女开拓进取又不忘根脉、身处异地仍心系家国的深厚情怀。</p>
+
+
+        <!--世界记忆，“侨”见未来-->
+        <div id="pt4" style="margin-bottom:10px;">
+            <div style="height: 10px;"></div>
+            <div class="image" style="height: 230px;">
+                <h3 class="zwtitle animate__animated animate__fadeIn animate__once animatedElement" style="text-align:center; background-color: #d2c0ae82;">世界记忆，“侨”见未来</h3>
+            </div>
+
+            <p>“批”一封，银几许，跨越山海，辗转归乡。2013年6月，历经多方数十年的努力，备受全球华人关注的侨批档案申遗成功，入选世界记忆遗产名录。</p>
+            <p>涉侨文物建筑凝聚着海外华侨的历史，是展示华侨文化的重要窗口，也是海外华侨乡愁记忆的重要载体。从20 世纪 50 年代起，华侨博物馆开始陆续建立，对华侨华人有关的历史见证物进行收集和保护，对有关的文化和历史进行展示、研究和传播，其中以广东、福建、浙江等一带居多。</p>
+            <p>如今，除了专门的从事华侨文物保护的华侨博物馆外，我国多个省市的各类博物馆中也有许多华侨文物收录在册。</p>
+            
+            <!--各省博物馆分布-->
+            <div class="flourish-embed flourish-hierarchy" data-src="visualisation/17397727" style="width: 45%;height: 45%;margin: auto;">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
+            </div>
+
+            <p>在馆藏数量方面，黑龙江黑河旅俄华侨纪念馆收录了大批旅俄华侨的书信及器物展品，书写了在特殊历史背景下的百年俄国华侨史和中俄(苏)人民友好史。而在我国华侨的另一个重要发源地——福建，也在华侨文物的搜集保护方面做出了了重大的贡献。</p>
+            <!--各省博物馆藏品数量-->
+            <div style="text-align: center;"><img src="./image/各省博物馆藏品数量.jpg" width="50%" alt="各省博物馆藏品数量"></div>
+            
+            <p>当前，我国各地博物馆所收录的华侨文物种类较为丰富，涵盖了从艺术到生活领域的各类藏品。</p>
+            <!--华侨藏品分类-->
+            <div style="text-align: center;"><img src="./image/华侨藏品分类.jpg" width="50%" alt="华侨藏品分类"></div>
+
+        <!--结语-->
+        <div id="pt5" style="margin-bottom:10px;">
+            <div style="height: 10px;"></div>
+            <div class="image" style="height: 230px;">
+                <h3 class="zwtitle animate__animated animate__fadeIn animate__once animatedElement" style="text-align:center; background-color: #d2c0ae82;">结语</h3>
+            </div>
+            <p><span class="highlight1">“侨批成为世界记忆遗产并不是终点，而是研究华侨文化的新起点。”</span></p>
+            <p>如今，水客的身影与批局的繁荣早已随时代的前行而暗淡，但是以侨批为代表的“诚实守信、艰苦奋斗、勇于开拓、心系桑梓”的华侨文化却永远不会过时。</p>
+            <p>赓续文化命脉，厚植家国情怀，你我都可以是新时代“侨”文章的执笔者。</p>
+        </div>
+
+
+        <!--参考文献等-->
+        <div style="margin-bottom:10px;">
+            <div style="height: 30px;"></div>
+            <div class="image" style="height: 490px;">
+                <div style="background-color: #c4aa91b7; height: 490px;">
+                <div style="height: 30px;"></div>
+                <p class="note2">参考资料：</p>
+                <p class="note2">
+                    [1]丁香医生：《2023年国民健康洞察报告》<br>
+                    [2]清渠数据：《2023中国新消费趋势白皮书》<br>
+                    [3]中国睡眠研究会：《2022中国健康睡眠调查报告》<br>
+                    [4]美柚App：《2022中国女性经期健康报告》<br>
+                    [5]库润数据、达智数科：《Z世代养身保健趋势洞察报告》<br>
+                    [6]亿欧智库：《2022年轻人膳食养生报告》<br>
+                    [7]艾瑞咨询：《2022年代际人群养生观念差异观察》<br>
+                    [8]消费者报道：《当代人养生报告：“00后”的健康困扰最多，中式养生潮流崛起》<br>
+                </p>
+        </div>
+
+        </div>
+
+      </div>
+      <!-- script -->
+    <!-- 导航栏显示 -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var navbar = document.getElementById("menu");
+        window.onscroll = function() {
+            var scrollHeight = window.pageYOffset || document.documentElement.scrollTop;
+            var threshold = 980; // 设置滚动高度的阈值，根据需要调整
+
+            if (scrollHeight > threshold) {
+                navbar.classList.remove("navbar-hidden");
+            } else {
+                navbar.classList.add("navbar-hidden");
+                }
+            };
+        });
+      </script>
+
+    
+    <!-- 打字机动画 -->
+    <script>
+        // 获取引言文字元素
+        const introText1 = document.getElementById('introText1');
+
+        // 检测元素是否在视口中
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // 检测滚动事件
+        window.addEventListener('scroll', function () {
+            if (isElementInViewport(introText1)) {
+                // 隐藏光标
+                introText1.style.borderRight = 'none';
+                // 调用打字机效果函数
+                typeWriter(introText1);
+                // 移除滚动事件监听，确保效果只触发一次
+                window.removeEventListener('scroll', arguments.callee);
+            }
+        });
+
+        function typeWriter(element, callback) {
+            const text = element.innerHTML.trim(); // 使用 trim() 去除两端空白字符
+            element.innerHTML = '';
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 28);
+                } else {
+                    // 执行回调函数
+                    if (typeof callback === 'function') {
+                        callback();
+                    }
+                }
+            }
+
+            type();
+        }
+    </script>
+    <!-- 小标题鼠标移入效果 -->
+    <script>
+        // 写个脚本控制鼠标移入效果
+
+        // 找到所有span标签
+        let spans = document.querySelectorAll('span');
+
+        // 为所有的标签增加绑定鼠标移入、移除的事件，并处理相关增加或移除样式操作
+        for (const key in spans) {
+            if (spans.hasOwnProperty(key)) {
+                const element = spans[key];
+
+                // key为字符类型，需要转数字。
+                let index = parseInt(key);
+
+                // 增加鼠标移入事件
+                element.addEventListener("mouseover", (e) => {
+                    element.classList.add('flat');
+
+                    // 联动操作，控制前后span同时增加样式
+
+                    // 判断奇数、偶数（spans 是从0开始数的）
+                    if (index % 2 == 0) {
+                        // 偶数后一个联动
+                        spans[index + 1].classList.add('flat');
+                    } else {
+                        // 奇数前一个联动
+                        spans[index - 1].classList.add('flat');
+                    }
+                });
+                // 增加鼠标移出事件
+                element.addEventListener("mouseout", (e) => {
+                    element.classList.remove('flat');
+
+                    // 联动操作，控制前后span同时移除样式
+
+                    // 判断奇数、偶数（spans 是从0开始数的）
+                    if (index % 2 == 0) {
+                        // 偶数后一个联动
+                        spans[index + 1].classList.remove('flat');
+                    } else {
+                        // 奇数前一个联动
+                        spans[index - 1].classList.remove('flat');
+                    }
+                });
+            }
+        }
+    </script>
+ 
+    
+
+
+    </body>
+    </html>
+    
+
